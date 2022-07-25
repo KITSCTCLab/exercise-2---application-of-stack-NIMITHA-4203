@@ -108,7 +108,7 @@ class Evaluate:
     stack = []
     for element in expression:
       if element.isnumeric():
-        stack.append(int(element)
+        stack.append(int(element))
       if len(stack) >= 2:
         if element == '+':
                      stack[-2] = stack[-2] + stack[-1]
