@@ -27,7 +27,11 @@ class Evaluate:
       True if it is empty, else returns False.
     """
       # Write your code here
-
+      if self.top == -1:
+        return True
+      else:
+        return False
+      
 
   def pop(self):
     """
@@ -36,6 +40,8 @@ class Evaluate:
       The data which is popped out if the stack is not empty.
     """
     # Write your code here
+    if not self.isEmpty():
+      self.stack.pop()
 
 
   def push(self, operand):
@@ -45,6 +51,8 @@ class Evaluate:
       operand: The operand to be pushed.
     """
     # Write your code here
+    if self.top != self.size_of_stack-1:
+      self.stack.append(operand)
 
 
   def validate_postfix_expression(self, expression):
@@ -56,6 +64,35 @@ class Evaluate:
       True if the expression is valid, else returns False.
     """
     # Write your code here
+    
+    flag = 1
+    num_operators = 0
+    num_operands = 0
+    operators = ["+","-","*","/","^"]
+    for element in expression:
+      
+      if element.isnumeric():
+        if int(element) == 0:
+          pass
+      
+      if element in operators:
+        num_operators += 1
+        
+      elif element.isnumeric():
+        num_operands += 1
+      
+      else:
+        flag = 0
+        
+      if num_operators+1 == num_operands:
+        flag = 1 
+      
+      
+      if flag == 0:
+        return False
+      else:
+        return True
+      
 
 
   def evaluate_postfix_expression(self, expression):
@@ -67,6 +104,29 @@ class Evaluate:
       The result of evaluated postfix expression.
     """
     # Write your code here
+    
+    stack = []
+    for element in expression:
+      if element.isnumeric():
+        stack.append(int(element)
+      if len(stack) >= 2:
+        if element == '+':
+                     stack[-2] = stack[-2] + stack[-1]
+                     stack.pop()
+        if element == '-':
+                     stack[-2] = stack[-2] - stack[-1]
+                     stack.pop()
+        if element == '*':
+                     stack[-2] = stack[-2] * stack[-1]
+                     stack.pop()
+        if element == '/':
+                     stack[-2] = stack[-2] / stack[-1]
+                     stack.pop()
+        if element == '^':
+                     stack[-2] = stack[-2] ** stack[-1]
+                     stack.pop()
+                     
+        
 
 
 # Do not change the following code
