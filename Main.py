@@ -89,6 +89,7 @@ class Evaluate:
       
       
       if flag == 0:
+        print("Invalid postfix expression")
         return False
       else:
         return True
