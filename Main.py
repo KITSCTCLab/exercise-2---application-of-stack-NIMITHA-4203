@@ -126,6 +126,7 @@ class Evaluate:
                      stack[-2] = stack[-2] ** stack[-1]
                      stack.pop()
                      
+        return stack[-1]
         
 
 
